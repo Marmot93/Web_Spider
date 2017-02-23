@@ -11,12 +11,15 @@ soup = BeautifulSoup(web_data.text,'lxml')
 names = soup.select('div.info > div.title')
 address = soup.select('div.address')
 imgs = soup.select('img.photo_image')
+prices = soup.select('price autoResize')
 
 
-for name,addres,img  in zip(names,address,imgs):
+
+for name,addres,img,price  in zip(names,address,imgs,prices):
     data = {
         'name':name.get_text(),
         'add' : addres.get_text(),
         'img' : img.get('src'),
+        'price' : prices.get_text()
     }
     print(data)
