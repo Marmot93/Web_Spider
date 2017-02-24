@@ -14,4 +14,4 @@ def get_all_info():
 
 if __name__ == '__main__':
     pool = Pool()     #多进程（process = num）
-    get_all_info()
+    pool.get_all_info()
