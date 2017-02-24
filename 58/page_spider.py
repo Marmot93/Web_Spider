@@ -45,4 +45,3 @@ def get_item_info(url):
                               'seller': seller, 'looktimes': looked, 'link': url})
     print('本页抓取成功')
 
-get_item_info('http://zhuanzhuan.58.com/detail/768260276672954372z.shtml')
