@@ -7,11 +7,11 @@ wuba = client['wuba']
 url_list = wuba['url_list']
 item_info = wuba['ietm_info']
 
-def get_all_info():
-    for url in url_list.find() :
-        get_item_info(url['url'])
 
+list = []
+for url in url_list.find():
+    list.append(url['url'])
 
 if __name__ == '__main__':
     pool = Pool()     #多进程（process = num）
-    pool.get_all_info()
+    pool.map(get_item_info,list)
