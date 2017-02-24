@@ -43,5 +43,5 @@ def get_item_info(url):
 
     item_info.insert_one({'title': title, 'price': price, 'add': add, 'info': info,
                               'seller': seller, 'looktimes': looked, 'link': url})
-    print('本页抓取成功')
-
+    # print({'title': title, 'price': price, 'add': add, 'info': info,
+    #                           'seller': seller, 'looktimes': looked, 'link': url})
