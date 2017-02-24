@@ -3,9 +3,11 @@ import requests
 import pymongo
 import time
 
+# 数据库
 client = pymongo.MongoClient('localhost',27017)
 wuba = client['wuba']
-url_list = wuba['url_list']
+url_list = wuba['url_list']         # 列表页
+item_info = wuba['ietm_info']       #详细信息
 
 
 # spider 1 抓取列表页
@@ -25,6 +27,7 @@ def get_links_from(chinnel_urls,pages,who_sell=0):
     else:
         pass
 
+
 # spide 2 抓取商品信息
 def get_item_info(url):
     web_data = requests.get(url)
@@ -32,10 +35,14 @@ def get_item_info(url):
     soup = BeautifulSoup(web_data.text,'lxml')
 
     title = str(soup.title.text.split('_')[0]).split('】')[1]
-    price = soup.select('price_now')
-    add = soup.select('palce_li')
-    info = soup.select('icon_png sanjiao')
+    price = soup.select('div.price_li > span')[0].text
+    add = soup.select('div.palce_li > span > i')[0].text
+    looked = soup.select('p > span.look_time')[0].text
+    info = soup.find_all(attrs='baby_kuang clearfix')[0].text
+    seller = soup.select('p.personal_name')[0].text
 
+    item_info.insert_one({'title': title, 'price': price, 'add': add, 'info': info,
+                              'seller': seller, 'looktimes': looked, 'link': url})
+    print('本页抓取成功')
 
-    print(title)
-get_item_info('http://zhuanzhuan.58.com/detail/834682811900149763z.shtml')
+get_item_info('http://zhuanzhuan.58.com/detail/768260276672954372z.shtml')
