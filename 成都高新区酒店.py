@@ -23,3 +23,4 @@ for name,addres,img,price  in zip(names,address,imgs,prices):
         'price' : prices.get_text()
     }
     print(data)
+# 输出数据
