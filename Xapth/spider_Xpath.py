@@ -19,5 +19,6 @@ def spider_item_info(url):
     }
     print(data)
 
+# 只做测试，用多进程map函数对 sipder_item_info()导入所有url即可
 url = 'http://zhuanzhuan.58.com/detail/837482115974103043z.shtml'
 spider_item_info(url)
