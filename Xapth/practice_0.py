@@ -2,6 +2,7 @@ import requests
 from lxml import etree
 from multiprocessing import Pool
 
+# s练习
 
 url_list = ['http://tieba.baidu.com/p/3522395718?pn={}'.format(i) for i in range(1,797)]
 
