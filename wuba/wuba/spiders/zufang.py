@@ -8,6 +8,7 @@ class WuSpider(scrapy.Spider):
     name = 'zufang'
     start_urls = ['http://cd.58.com/chuzu/0/pn1/']
     redis_key = 'zufang:start_urls'
+    allowed_domains = ["58.com"]
 
     def parse(self, response):
         for i in response.xpath('/html/body/div[3]/div[1]/div[5]/div[2]/ul/li'):
@@ -20,7 +21,7 @@ class WuSpider(scrapy.Spider):
                 item['add'] = re.findall('>(.*?)</a>',add)
                 item['price'] = i.xpath('div[3]/div[2]/b/text()').extract_first()
             except Exception:
-                print('出错了')
+                print('翻页')
                 pass
             yield item
 
