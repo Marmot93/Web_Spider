@@ -15,6 +15,7 @@ class WuSpider(scrapy.Spider):
             try:
                 item['title'] = i.xpath('div[@class="des"]/h2/a[1]/text()').extract_first().split('|')[1]
                 item['huxing'] = i.xpath('div[2]/p[1]/text()').extract_first()
+                # 直接抽不出来地址，就先提取再正则
                 add = i.xpath('div[2]/p[2]').extract_first()
                 item['add'] = re.findall('>(.*?)</a>',add)
                 item['price'] = i.xpath('div[3]/div[2]/b/text()').extract_first()
@@ -23,8 +24,8 @@ class WuSpider(scrapy.Spider):
                 pass
             yield item
 
-            # next_page = response.xpath('//a[@class="next"]/@href').extract_first()
-            # if next_page is not None:
-            #     # next_page = response.urljoin(next_page)
-            #     yield scrapy.Request(next_page, callback=self.parse)
+            next_page = response.xpath('//a[@class="next"]/@href').extract_first()
+            if next_page is not None:
+                # next_page = response.urljoin(next_page) # 这里直接就给出了下一页的链接，不需要urljoin了
+                yield scrapy.Request(next_page, callback=self.parse)
 

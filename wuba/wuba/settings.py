@@ -8,6 +8,7 @@ NEWSPIDER_MODULE = 'wuba.spiders'
 
 ROBOTSTXT_OBEY = True
 
+DOWNLOAD_DELAY = 1 # 延迟
 
 ITEM_PIPELINES = {
    'wuba.pipelines.WubaPipeline': 300,
