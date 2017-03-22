@@ -2,6 +2,7 @@ import scrapy
 from scrapy_redis.spiders import RedisSpider
 from ..items import WubaItem
 import re
+import webbrowser
 
 
 class WuSpider(scrapy.Spider):
@@ -40,7 +41,7 @@ class WuSpider(scrapy.Spider):
             item['xiaoqu'] = response.xpath('/html/body/div[4]/div[2]/div[2]/div[1]/div[1]/ul/li[4]/span[2]/a/text()').extract_first().split()
             item['time'] = response.xpath('/html/body/div[4]/div[1]/p/text()').extract_first().split()
         except Exception:
-            print('该页似乎消失了' + item['link'])
-            pass
+            print('该页似乎消失了' + str(item['link']))
+            webbrowser.open(str(item['link']),new=0,autoraise=True)
 
         yield item

@@ -13,7 +13,7 @@ COOKIES_ENABLED = False
 
 # USER_AGENT = agents
 
-DOWNLOAD_DELAY = 0.5 # 延迟
+DOWNLOAD_DELAY = 1 # 延迟
 
 LOG_LEVEL = 'INFO'    # 日志级别
 
