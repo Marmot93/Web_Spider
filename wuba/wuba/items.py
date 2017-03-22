@@ -15,3 +15,8 @@ class WubaItem(scrapy.Item):
     huxing = scrapy.Field()
     add = scrapy.Field()
     price = scrapy.Field()
+    det = scrapy.Field()
+    link = scrapy.Field()
+    chaoxiang = scrapy.Field()
+    xiaoqu = scrapy.Field()
+    time = scrapy.Field()
