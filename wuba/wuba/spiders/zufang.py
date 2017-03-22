@@ -27,10 +27,10 @@ class WuSpider(scrapy.Spider):
                 pass
             yield scrapy.Request(link,meta={'item':item}, callback=self.parse_1)
 
-            # next_page = response.xpath('//a[@class="next"]/@href').extract_first()
-            # if next_page is not None:
-            #     # next_page = response.urljoin(next_page) # 这里直接就给出了下一页的链接，不需要urljoin了
-            #     yield scrapy.Request(next_page, callback=self.parse)
+            next_page = response.xpath('//a[@class="next"]/@href').extract_first()
+            if next_page is not None:
+                # next_page = response.urljoin(next_page) # 这里直接就给出了下一页的链接，不需要urljoin了
+                yield scrapy.Request(next_page, callback=self.parse)
 
     def parse_1(self,response):
         item = response.meta['item']
