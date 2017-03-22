@@ -23,7 +23,7 @@ class WuSpider(scrapy.Spider):
                 link = i.xpath('div[2]/h2/a[1]/@href').extract_first()
                 item['link'] = link
             except Exception:
-                print(response.url + ' 的url抓取完成')
+                print(response.url + ' 页的url抓取完成')
                 pass
             yield scrapy.Request(link,meta={'item':item}, callback=self.parse_1)
 
