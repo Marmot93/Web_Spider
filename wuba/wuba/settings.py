@@ -15,7 +15,7 @@ COOKIES_ENABLED = False
 
 DOWNLOAD_DELAY = 1 # 延迟
 
-LOG_LEVEL = 'INFO'    # 日志级别
+# LOG_LEVEL = 'INFO'    # 日志级别
 
 ITEM_PIPELINES = {
    'wuba.pipelines.WubaPipeline': 300,
