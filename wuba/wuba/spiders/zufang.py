@@ -1,5 +1,4 @@
 import scrapy
-from scrapy_redis.spiders import RedisSpider
 from ..items import WubaItem
 import re
 import webbrowser
